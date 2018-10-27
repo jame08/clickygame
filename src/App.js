@@ -13,11 +13,17 @@ class App extends Component {
     score: 0
   };
 
+  
   gameOver = () => {
- 
 
+    const newArr = this.state.cards.map(card => ({id: card.id,name:card.name,image:card.image,attr: false})).map(a => [Math.random(), a])
+    .sort((a, b) => a[0] - b[0])
+    .map(a => a[1]);
+
+  
     this.setState(
       {
+        cards: newArr,
         score: 0 
       }
       );
@@ -28,9 +34,10 @@ class App extends Component {
 
   shuffleArray =  id => {
 
-    let newArr = this.state.cards.slice();
+
 
     this.state.cards.find( x => {
+      
 
       if(this.state.score < this.state.cards.length - 1){
 
@@ -66,7 +73,9 @@ class App extends Component {
 
   render() {
     return (
+      
 <div>
+
       <NavBar score= {this.state.score}></NavBar>
       
       <Wrapper>
