@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
+import GameCards from "./components/GameCards"
 import Wrapper from "./components/Wrapper";
 
 import Header from "./components/Header";
-import friends from "./friends.json";
+import cards from "./Cards.json";
 import "./App.css";
-import Field from "./components/fieldWrapper/field";
+
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.cards to the cards json array
   state = {
-    friends,
+    cards,
     score: 0
   };
 
   gameOver = () => {
  
-    this.state.friends.map(x => {
+    this.state.cards.map(x => {
       x.attr = false;
       return true;
       
@@ -29,14 +29,14 @@ class App extends Component {
 
   shuffleArray =  id => {
    
-    this.state.friends.find( x => {
+    this.state.cards.find( x => {
 
       if (x.id === id ){
 
         if(x.attr === false){
           x.attr = true;
           this.setState({score: this.state.score + 1});
-          this.state.friends.sort(() => Math.random() - 0.5)
+          this.state.cards.sort(() => Math.random() - 0.5)
 
      return true;
 
@@ -55,13 +55,13 @@ class App extends Component {
       <Wrapper>
       <Header score= {this.state.score} ></Header>
       
-        {this.state.friends.map(friend => (
-          <FriendCard
+        {this.state.cards.map(Card => (
+          <GameCards
             shuffleArray={this.shuffleArray}
-            id={friend.id}
-            key={friend.id}
-            image={friend.image}
-            attr = {friend.attr}
+            id={Card.id}
+            key={Card.id}
+            image={Card.image}
+            attr = {Card.attr}
   
           />
         ))}

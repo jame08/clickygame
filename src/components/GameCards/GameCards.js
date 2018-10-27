@@ -1,7 +1,7 @@
 import React from "react";
-import "./FriendCard.css";
+import "./GameCards.css";
 
-const FriendCard = props => (
+const GameCards = props => (
 
 
   <div className="card">
@@ -12,4 +12,4 @@ const FriendCard = props => (
 
 );
 
-export default FriendCard;
+export default GameCards;
