@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import GameCards from "./components/GameCards"
 import Wrapper from "./components/Wrapper";
-
-import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 import cards from "./Cards.json";
 import "./App.css";
 
@@ -16,45 +15,61 @@ class App extends Component {
 
   gameOver = () => {
  
-    this.state.cards.map(x => {
-      x.attr = false;
-      return true;
-      
-    })
-    this.setState({score: 0});
-    console.log("over");
 
+    this.setState(
+      {
+        score: 0 
+      }
+      );
+    console.log("over");
+    
 
   }
 
   shuffleArray =  id => {
-   
+
+    let newArr = this.state.cards.slice();
+
     this.state.cards.find( x => {
 
-      if (x.id === id ){
+      if(this.state.score < this.state.cards.length - 1){
 
-        if(x.attr === false){
-          x.attr = true;
-          this.setState({score: this.state.score + 1});
-          this.state.cards.sort(() => Math.random() - 0.5)
+        if (x.id === id  ){
 
-     return true;
+          if(x.attr === false){
+            x.attr = true;
+            this.setState({score: this.state.score + 1});
+            const arr = this.state.cards
+            .map(a => [Math.random(), a])
+            .sort((a, b) => a[0] - b[0])
+            .map(a => a[1]);
+  
+            this.setState({cards: arr })
+  
+       return true;
+  
+      }else {
+          this.gameOver();
+  
+          }
+        } //big if
 
-    }else {
-        this.gameOver();
-
-        }
       }
+      else {
+        alert("Won");
+
+      }
+
     });
 
   }
 
   render() {
     return (
-    
-      <Wrapper>
-      <Header score= {this.state.score} ></Header>
+<div>
+      <NavBar score= {this.state.score}></NavBar>
       
+      <Wrapper>
         {this.state.cards.map(Card => (
           <GameCards
             shuffleArray={this.shuffleArray}
@@ -65,9 +80,10 @@ class App extends Component {
   
           />
         ))}
+        </Wrapper>
 
-      
-      </Wrapper>
+      </div>
+     
     );
   }
 }

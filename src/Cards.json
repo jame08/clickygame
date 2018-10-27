@@ -48,12 +48,12 @@
     "id": 8,
     "name": "Johnny Bravo",
     "image": "http://vignette3.wikia.nocookie.net/p__/images/9/9a/Johnny_Bravo.png/revision/latest?cb=20131031233339&path-prefix=protagonist",
-    "attr": "false"
+    "attr": false
   },
   {
     "id": 9,
     "name": "Tommy Pickles",
     "image": "https://vignette4.wikia.nocookie.net/uncyclopedia/images/e/e4/Tommy_Pickles.png/revision/latest?cb=20110530102641",
-    "attr": "false"
+    "attr": false
   }
 ]

@@ -4,10 +4,8 @@ import "./Header.css";
 const Header = props => (
 
   <div className="header">
-    <div className="title">Clicky Game</div>
-    <div className="scores">
-      Score: {props.score}
-    </div>
+  
+   
   </div>
 );
 

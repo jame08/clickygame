@@ -7,4 +7,11 @@ html, body, #root {
   padding: 0;
   margin: 0;
   height: 100%;
+  background-image: url("./background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: -25rem;
+
+
 }
